@@ -18,10 +18,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, i) in listData" :class="{'bg-info':item.selected}"><!--如果item.selected是true的話她會加上bg-info-->
+        <tr v-for="(item, i) in listData" :class="{ 'bg-info': item.seLected }"><!--如果item.seLected是true的話她會加上bg-info-->
           <!--用V-for把陣列資料存近來,item會把陣列資料一筆一筆存進去,i代表序號 ,把每一筆ListData資料存到item裡-->
           <th scope="row">{{ i + 1 }}</th>
-          <td><img :src="item.picture.medium" width="60" alt="" /></td>
+          <td><img :src="item.picture.medium" width="60" alt="">
+          </td>
           <td>{{ item.name.first }} {{ item.name.last }}</td>
           <!--輸入檢查裡陣列中某幾筆資料出來-->
           <td>{{ item.email }}</td>
@@ -54,7 +55,7 @@ export default {
           console.log(response);
           vm.listData = response.data.results //把讀取回來的資料存到ListData裡面
           vm.listData.forEach(function(item){
-           vm.$set(item,'selected', false)  //每一筆listData資料都加入selected屬性
+           vm.$set(item,'seLected', false)  //每一筆listData資料都加入selected屬性,用VUE的時候資料沒雙向綁定時用此方法
           });
         })
         .catch(function (error) {
